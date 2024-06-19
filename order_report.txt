@@ -1,0 +1,6 @@
+Order ID: 762212 Order Date: 2020-03-15
+Customer ID #0  , email: 
+
+ ,  
+Payment: Credit Card: 373975319551257 Expiration: 12-2023
+

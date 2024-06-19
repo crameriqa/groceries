@@ -1,0 +1,17 @@
+# Ignore object files and executables
+*.o
+*.out
+
+# Ignore compiled binaries
+bin/
+
+# Ignore build directories
+build/
+
+# Ignore generated files
+Makefile
+CMakeLists.txt.user
+
+# Ignore IDE specific files
+.vscode/
+.idea/
