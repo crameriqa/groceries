@@ -40,7 +40,7 @@ public:
     
     string print_detail() const {
         return "Customer ID #" + to_string(id) + " " + name + " " + phone + ", email: " + email + "\n" +
-               address + "\n " +
+               address + "\n" +
                city + ", " + state + " " + zip;
     }
 };
@@ -227,7 +227,7 @@ public:
     }
 
     string print_order() const {
-        string order_str = "Order ID: " + to_string(order_id) + " Order Date: " + order_date + "\n" +
+        string order_str = "Order Number: " + to_string(order_number) + " Order Date: " + order_date + "\n" +
                            customer.print_detail() + "\n";
         for (const auto& line_item : line_items) {
             order_str += "Item ID: " + to_string(line_item.item_id) + " Quantity: " + to_string(line_item.quantity) + "\n";
@@ -253,10 +253,9 @@ void read_orders(string file) {
     while (getline(inFS, line1) && getline(inFS, line2)) {
         vector<string> data1 = split(line1, ',');
         Order order = Order();
-        order.order_id = stoi(data1[0]);
+        order.customer_id = stoi(data1[0]);
         order.order_number = stoi(data1[1]);
         order.order_date = data1[2];
-        order.customer_id = stoi(data1[3]);
 
         // Find customer
         int cust_idx = find_cust_idx(order.customer_id);
@@ -264,7 +263,8 @@ void read_orders(string file) {
             order.customer = customerList[cust_idx];
         }
 
-        for (int i = 4; i < data1.size(); i++) {
+        for (int i = 3; i < data1.size(); i++)
+        {
             vector<string> item_data = split(data1[i], '-');
             LineItem line_item;
             line_item.item_id = stoi(item_data[0]);
